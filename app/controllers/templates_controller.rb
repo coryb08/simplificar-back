@@ -5,8 +5,9 @@ def index
 end
 
 def create
-  template = Template.new(params[:name])
+  template = Template.new(template_params)
   if template.save
+
     render json:template
   else
     render json:template.errors
