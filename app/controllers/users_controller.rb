@@ -6,10 +6,11 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(name: params[:name])
-    if user.save
+    if user.valid?
+      user.save
       render json:user
     else
-      render json:user.errors
+      render json:{errors: user.errors}
     end
   end
 
